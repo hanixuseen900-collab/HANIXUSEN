@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyPort International | Home</title>
+    <link rel="stylesheet" href="hero.css">
+    <style>
+        /* ===== NAVBAR MOBILE ===== */
+        .menu-btn {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background: #fff;
+                width: 100%;
+                flex-direction: column;
+                display: none;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links li {
+                padding: 15px;
+                text-align: center;
+            }
+
+            .btn-book-top {
+                display: none;
+            }
+        }
+
+        /* ===== HERO RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+        }
+
+        /* ===== SERVICES GRID ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        /* ===== TABLE RESPONSIVE ===== */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            min-width: 600px;
+        }
+
+        /* ===== FOOTER ===== */
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-box">✈</div> SkyPort <span>INTERNATIONAL</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="flight.html">Flights</a></li>
+            <li><a href="hotel.html">Hotels</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="btn-book-top">Book Now</button>
+    </nav>
+
+    <header class="main-hero">
+        <div class="hero-content">
+            <div class="welcome-tag">👋 Welcome to SkyPort International</div>
+            <h1>Your Gateway to the <span class="blue-text">World</span></h1>
+            <p>Experience seamless travel with world-class facilities, exceptional service, and connections to over 200
+                destinations worldwide.</p>
+            <div class="hero-btns">
+                <button class="btn-light">🔍 Check Flights</button>
+                <button class="btn-dark">💼 Book Services</button>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <h3>200+</h3>
+                    <p>Destinations</p>
+                </div>
+                <div class="stat">
+                    <h3>50M+</h3>
+                    <p>Passengers/Year</p>
+                </div>
+                <div class="stat">
+                    <h3>4</h3>
+                    <p>Terminals</p>
+                </div>
+                <div class="stat">
+                    <h3>24/7</h3>
+                    <p>Operations</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="section-padding">
+        <div class="center-text">
+            <h2>Quick Services</h2>
+            <p>Everything you need for a seamless travel experience, all in one place.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="s-card">
+                <div class="icon-bg blue">✈</div>
+                <h4>Flight Status</h4>
+                <p>Real-time arrivals and departures</p>
+            </div>
+            <div class="s-card">
+                <div class="icon-bg sky">🎫</div>
+                <h4>Check-in</h4>
+                <p>Online check-in available</p>
+            </div>
+            <div class="s-card">
+                <div class="icon-bg cyan">💼</div>
+                <h4>Baggage Info</h4>
+                <p>Track and claim baggage</p>
+            </div>
+            <div class="s-card">
+                <div class="icon-bg green">🏨</div>
+                <h4>Hotels</h4>
+                <p>Airport hotels & lounges</p>
+            </div>
+            <div class="s-card">
+                <div class="icon-bg orange">🍽</div>
+                <h4>Dining</h4>
+                <p>Food courts & restaurants</p>
+            </div>
+            <div class="s-card">
+                <div class="icon-bg dark-blue">❓</div>
+                <h4>Help Desk</h4>
+                <p>24/7 passenger assistance</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding gray-bg">
+        <div class="flex-header">
+            <div>
+                <h3>Live Flight Information</h3>
+                <p>Real-time updates on arrivals and departures</p>
+            </div>
+            <button class="btn-outline">View All Flights →</button>
+        </div>
+
+        <div class="flight-tabs">
+            <button class="tab active">🛫 Departures</button>
+            <button class="tab">🛬 Arrivals</button>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>FLIGHT</th>
+                        <th>DESTINATION</th>
+                        <th>TIME</th>
+                        <th>GATE</th>
+                        <th>STATUS</th>
+                    </tr>
+                </thead>
+                <tbody id="homeFlights">
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo white">✈ SkyPort</div>
+                <p>Your gateway to the world. Experience seamless travel with world-class facilities and services.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li>Flight Status</li>
+                    <li>Check-in Online</li>
+                    <li>Baggage Info</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li>Duty Free</li>
+                    <li>Food & Dining</li>
+                    <li>Hotels</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>📍 Terminal Drive, SkyPort City</p>
+                <p>📞 +1 (555) 123-4567</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* ===== MOBILE NAVBAR TOGGLE ===== */
+        const navbar = document.querySelector(".navbar");
+        const navLinks = document.querySelector(".nav-links");
+
+        const menuBtn = document.createElement("div");
+        menuBtn.className = "menu-btn";
+        menuBtn.innerHTML = "☰";
+        navbar.appendChild(menuBtn);
+
+        menuBtn.addEventListener("click", () => {
+            navLinks.classList.toggle("show");
+        });
+
+
+        /* ===== FLIGHT DATA ===== */
+        const departures = [
+            { flight: "SK101", dest: "London", time: "10:30", gate: "A3", status: "On Time" },
+            { flight: "SK202", dest: "Dubai", time: "12:15", gate: "B1", status: "Boarding" },
+            { flight: "SK303", dest: "Istanbul", time: "14:00", gate: "C2", status: "Delayed" }
+        ];
+
+        const arrivals = [
+            { flight: "SK404", dest: "Nairobi", time: "09:45", gate: "D4", status: "Arrived" },
+            { flight: "SK505", dest: "Doha", time: "11:20", gate: "A1", status: "Landing" }
+        ];
+
+        const tableBody = document.getElementById("homeFlights");
+        const tabs = document.querySelectorAll(".tab");
+
+        /* ===== LOAD FLIGHTS ===== */
+        function loadFlights(data) {
+            tableBody.innerHTML = "";
+            data.forEach(f => {
+                tableBody.innerHTML += `
+            <tr>
+                <td>${f.flight}</td>
+                <td>${f.dest}</td>
+                <td>${f.time}</td>
+                <td>${f.gate}</td>
+                <td class="status">${f.status}</td>
+            </tr>
+        `;
+            });
+        }
+
+        /* DEFAULT */
+        loadFlights(departures);
+
+        /* ===== TAB SWITCH ===== */
+        tabs.forEach((tab, index) => {
+            tab.addEventListener("click", () => {
+                tabs.forEach(t => t.classList.remove("active"));
+                tab.classList.add("active");
+
+                index === 0 ? loadFlights(departures) : loadFlights(arrivals);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

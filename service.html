@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Services | SkyPort International</title>
+    <link rel="stylesheet" href="service.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ===== MOBILE NAVBAR ===== */
+        .menu-btn {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                right: 0;
+                width: 100%;
+                background: #fff;
+                flex-direction: column;
+                display: none;
+                z-index: 100;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links li {
+                padding: 15px;
+                text-align: center;
+            }
+
+            .btn-primary {
+                display: none;
+            }
+        }
+
+        /* ===== HERO SECTION ===== */
+        @media (max-width: 768px) {
+            .hero-blue-section h1 {
+                font-size: 32px;
+            }
+
+            .hero-blue-section p {
+                font-size: 14px;
+            }
+        }
+
+        /* ===== FORM RESPONSIVE ===== */
+        @media (max-width: 768px) {
+
+            .form-row,
+            .form-row-tri {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== TABS ===== */
+        .tabs-wrapper {
+            overflow-x: auto;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            white-space: nowrap;
+        }
+
+        /* ===== EXTRA SERVICES GRID ===== */
+        .extra-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        /* ===== FOOTER ===== */
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-box">✈</div> SkyPort <span>INTERNATIONAL</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="flight.html">Flights</a></li>
+            <li><a href="hotel.html">Hotels</a></li>
+            <li><a href="service.html" class="active">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="btn-primary">Book Now</button>
+    </nav>
+
+    <header class="hero-blue-section">
+        <div class="badge-container">
+            <span class="service-badge">🛂 Passenger Services</span>
+        </div>
+        <h1>Travel Services</h1>
+        <p>Everything you need for your journey – from booking to baggage claim.</p>
+    </header>
+
+    <main class="services-container">
+
+        <div class="tabs-wrapper">
+            <button class="tab-btn active">🛫 Ticket Booking</button>
+            <button class="tab-btn">👤 Check-in</button>
+            <button class="tab-btn">🧳 Baggage Info</button>
+        </div>
+
+        <div class="booking-card">
+            <div class="card-header-flex">
+                <div class="icon-square">✈</div>
+                <div>
+                    <h3>Book a Flight</h3>
+                    <p>Search and book your next journey</p>
+                </div>
+            </div>
+
+            <form class="booking-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>From</label>
+                        <input type="text" placeholder="City or Airport">
+                    </div>
+                    <div class="form-group">
+                        <label>To</label>
+                        <input type="text" placeholder="City or Airport">
+                    </div>
+                </div>
+
+                <div class="form-row-tri">
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date">
+                    </div>
+                    <div class="form-group">
+                        <label>Passengers</label>
+                        <select>
+                            <option>1 Passenger</option>
+                            <option>2 Passengers</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Class</label>
+                        <select>
+                            <option>Economy</option>
+                            <option>Business</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="search-btn">Search Flights</button>
+            </form>
+        </div>
+
+        <h2 class="sub-heading">More Airport Services</h2>
+
+        <div class="extra-services-grid">
+            <div class="info-card">
+                <div class="info-icon yellow">🍴</div>
+                <h4>Food Courts</h4>
+                <p>Explore 50+ dining options across all terminals. From quick bites to fine dining.</p>
+                <div class="terminal-info">
+                    <div class="t-line"><span>Terminal 1</span> <span>15 outlets</span></div>
+                    <div class="t-line"><span>Terminal 2</span> <span>12 outlets</span></div>
+                    <div class="t-line"><span>Terminal 3</span> <span>18 outlets</span></div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon sky">🛍</div>
+                <h4>Duty Free Shops</h4>
+                <p>Shop tax-free on perfumes, electronics, fashion, and more before your flight.</p>
+                <div class="terminal-info">
+                    <div class="t-line"><span>Electronics</span> <span>All terminals</span></div>
+                    <div class="t-line"><span>Fashion</span> <span>T1, T3</span></div>
+                    <div class="t-line"><span>Perfumes</span> <span>All terminals</span></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-dark">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <div class="logo white">✈ SkyPort</div>
+                <p>Your gateway to the world. Experience seamless travel with world-class facilities and services.</p>
+            </div>
+            <div class="footer-links">
+                <h5>Quick Links</h5>
+                <ul>
+                    <li>Flight Status</li>
+                    <li>Check-in Online</li>
+                    <li>Baggage Info</li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>Services</h5>
+                <ul>
+                    <li>Duty Free</li>
+                    <li>Food & Dining</li>
+                    <li>Hotels</li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h5>Contact</h5>
+                <p>📍 Terminal Drive, SkyPort City</p>
+                <p>📞 +1 (555) 123-4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2024 SkyPort International Airport. All rights reserved.</div>
+    </footer>
+
+    <script>
+        /* ===== MOBILE NAVBAR ===== */
+        const navbar = document.querySelector(".navbar");
+        const navLinks = document.querySelector(".nav-links");
+
+        const menuBtn = document.createElement("div");
+        menuBtn.className = "menu-btn";
+        menuBtn.innerHTML = "☰";
+        navbar.appendChild(menuBtn);
+
+        menuBtn.addEventListener("click", () => {
+            navLinks.classList.toggle("show");
+        });
+
+
+        /* ===== TABS SYSTEM ===== */
+        const tabs = document.querySelectorAll(".tab-btn");
+        const bookingCard = document.querySelector(".booking-card");
+
+        tabs.forEach(tab => {
+            tab.addEventListener("click", () => {
+                tabs.forEach(t => t.classList.remove("active"));
+                tab.classList.add("active");
+
+                // demo text change (real app would load new content)
+                const title = bookingCard.querySelector("h3");
+                const desc = bookingCard.querySelector("p");
+
+                if (tab.innerText.includes("Ticket")) {
+                    title.innerText = "Book a Flight";
+                    desc.innerText = "Search and book your next journey";
+                }
+                else if (tab.innerText.includes("Check")) {
+                    title.innerText = "Online Check-in";
+                    desc.innerText = "Save time by checking in online";
+                }
+                else {
+                    title.innerText = "Baggage Information";
+                    desc.innerText = "Track baggage rules and allowances";
+                }
+            });
+        });
+
+
+        /* ===== FORM SUBMIT (DEMO) ===== */
+        const form = document.querySelector(".booking-form");
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            alert("🔍 Searching flights... (Demo)");
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>SkyPort - Flights</title>
+    <style>
+        /* ===== MOBILE NAVBAR ===== */
+        .menu-btn {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                right: 0;
+                width: 100%;
+                background: #fff;
+                flex-direction: column;
+                display: none;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links li {
+                padding: 15px;
+                text-align: center;
+            }
+
+            .btn-book {
+                display: none;
+            }
+        }
+
+        /* ===== HERO ===== */
+        @media (max-width: 768px) {
+            .hero-header h1 {
+                font-size: 30px;
+            }
+
+            .hero-header p {
+                font-size: 14px;
+            }
+        }
+
+        /* ===== TABLE RESPONSIVE ===== */
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            min-width: 600px;
+        }
+
+        /* ===== FOOTER ===== */
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-box">✈</div> SkyPort <span>INTERNATIONAL</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="flight.html" class="active">Flights</a></li>
+            <li><a href="hotel.html">Hotels</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="btn-book">Book Now</button>
+    </nav>
+
+    <header class="hero-header">
+        <span class="badge">✈ Live Flight Information</span>
+        <h1>Flight Status</h1>
+        <p>Track arrivals and departures in real-time.</p>
+    </header>
+
+    <main class="content-section">
+        <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+            <div>
+                <button class="btn-book">Departures</button>
+                <button style="border:none; background:none; margin-left:10px; cursor:pointer;">Arrivals</button>
+            </div>
+            <button id="refreshBtn"
+                style="padding:8px 15px; border-radius:5px; border:1px solid #ddd; background:white;">Refresh</button>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Flight</th>
+                        <th>Destination</th>
+                        <th>Time</th>
+                        <th>Gate</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="flightBody">
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <h4 style="color:var(--primary-blue)">SkyPort</h4>
+                <p>Your gateway to the world. Experience seamless travel with world-class facilities.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <p>Flight Status</p>
+                <p>Check-in Online</p>
+            </div>
+            <div>
+                <h4>Services</h4>
+                <p>Duty Free</p>
+                <p>Hotels</p>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p>Terminal Drive, SkyPort City</p>
+                <p>+1 (555) 123-4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2024 SkyPort International Airport. All rights reserved.</div>
+    </footer>
+
+    <script>
+        /* ===== NAVBAR MOBILE ===== */
+        const navbar = document.querySelector(".navbar");
+        const navLinks = document.querySelector(".nav-links");
+
+        const menuBtn = document.createElement("div");
+        menuBtn.className = "menu-btn";
+        menuBtn.innerHTML = "☰";
+        navbar.appendChild(menuBtn);
+
+        menuBtn.addEventListener("click", () => {
+            navLinks.classList.toggle("show");
+        });
+
+
+        /* ===== FLIGHT DATA ===== */
+        const departures = [
+            { flight: "SP101", dest: "London", time: "09:30", gate: "A1", status: "On Time" },
+            { flight: "SP202", dest: "Dubai", time: "11:15", gate: "B3", status: "Boarding" },
+            { flight: "SP303", dest: "Istanbul", time: "13:40", gate: "C2", status: "Delayed" }
+        ];
+
+        const arrivals = [
+            { flight: "SP404", dest: "Nairobi", time: "08:50", gate: "D1", status: "Arrived" },
+            { flight: "SP505", dest: "Doha", time: "10:20", gate: "A4", status: "Landing" }
+        ];
+
+        let currentMode = "departures";
+        const flightBody = document.getElementById("flightBody");
+        const refreshBtn = document.getElementById("refreshBtn");
+        const buttons = document.querySelectorAll(".content-section button");
+
+
+        /* ===== LOAD TABLE ===== */
+        function loadFlights(data) {
+            flightBody.innerHTML = "";
+            data.forEach(f => {
+                flightBody.innerHTML += `
+            <tr>
+                <td>${f.flight}</td>
+                <td>${f.dest}</td>
+                <td>${f.time}</td>
+                <td>${f.gate}</td>
+                <td class="status">${f.status}</td>
+            </tr>
+        `;
+            });
+        }
+
+        /* DEFAULT LOAD */
+        loadFlights(departures);
+
+
+        /* ===== DEPARTURES / ARRIVALS ===== */
+        buttons[0].addEventListener("click", () => {
+            currentMode = "departures";
+            loadFlights(departures);
+            buttons[0].classList.add("btn-book");
+            buttons[1].classList.remove("btn-book");
+        });
+
+        buttons[1].addEventListener("click", () => {
+            currentMode = "arrivals";
+            loadFlights(arrivals);
+            buttons[1].classList.add("btn-book");
+            buttons[0].classList.remove("btn-book");
+        });
+
+
+        /* ===== REFRESH ===== */
+        refreshBtn.addEventListener("click", () => {
+            currentMode === "departures"
+                ? loadFlights(departures)
+                : loadFlights(arrivals);
+        });
+    </script>
+
+</body>
+
+</html>

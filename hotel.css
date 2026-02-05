@@ -1,0 +1,65 @@
+:root {
+    --primary-blue: #0284c7;
+    --dark-navy: #0f172a;
+    --sky-gradient: linear-gradient(to right, #0ea5e9, #2563eb);
+    --bg-light: #f8fafc;
+    --white: #ffffff;
+    --text-slate: #64748b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+body { background-color: var(--bg-light); color: var(--dark-navy); }
+
+/* Navigation - Sida sawirka sare */
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 8%; background: var(--white);
+    position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.logo { font-size: 1.5rem; font-weight: 800; color: var(--dark-navy); display: flex; align-items: center; gap: 8px; }
+.logo span { color: var(--text-slate); font-size: 0.7rem; letter-spacing: 1px; }
+.nav-links { display: flex; list-style: none; gap: 2rem; }
+.nav-links a { text-decoration: none; color: var(--text-slate); font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--primary-blue); }
+.btn-book-now { background: #1e40af; color: white; border: none; padding: 0.6rem 1.5rem; border-radius: 6px; cursor: pointer; font-weight: 600; }
+
+/* Hero Section - Blue Header */
+.page-header {
+    background: var(--sky-gradient);
+    padding: 4rem 2rem; text-align: center; color: white;
+}
+.header-badge { background: rgba(255,255,255,0.2); padding: 6px 16px; border-radius: 20px; font-size: 0.8rem; margin-bottom: 1rem; display: inline-block; }
+.page-header h1 { font-size: 3rem; margin-bottom: 1rem; font-weight: 800; }
+.page-header p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+
+/* Hotel Cards Grid - Sida sawirka Hotels */
+.hotel-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem; padding: 3rem 8%;
+}
+.hotel-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition: 0.3s; }
+.hotel-card:hover { transform: translateY(-5px); }
+.card-banner { position: relative; height: 200px; }
+.card-banner img { width: 100%; height: 100%; object-fit: cover; }
+.type-tag { position: absolute; top: 15px; left: 15px; background: var(--primary-blue); color: white; padding: 4px 12px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; }
+.booked-tag { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #ef4444; color: white; padding: 8px 20px; border-radius: 5px; font-weight: bold; }
+
+.card-content { padding: 1.5rem; }
+.card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+.rating { color: #f59e0b; font-weight: bold; font-size: 0.9rem; }
+.amenities { display: flex; gap: 8px; margin: 15px 0; }
+.amenity { background: #f1f5f9; color: #64748b; font-size: 0.7rem; padding: 4px 8px; border-radius: 4px; }
+
+.card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; border-top: 1px solid #f1f5f9; padding-top: 1rem; }
+.price { font-size: 1.4rem; font-weight: 800; color: var(--dark-navy); }
+.price span { font-size: 0.8rem; color: var(--text-slate); font-weight: 400; }
+
+/* Footer - Dark Navy */
+.footer { background: #0f172a; color: #94a3b8; padding: 4rem 8% 2rem; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3rem; margin-bottom: 3rem; }
+.footer h4 { color: white; margin-bottom: 1.5rem; font-size: 1rem; }
+.footer ul { list-style: none; }
+.footer li { margin-bottom: 0.8rem; font-size: 0.9rem; cursor: pointer; transition: 0.2s; }
+.footer li:hover { color: white; }
+.footer-bottom { border-top: 1px solid #1e293b; padding-top: 2rem; display: flex; justify-content: space-between; font-size: 0.8rem; }
